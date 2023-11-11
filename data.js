@@ -2,21 +2,39 @@
 
 export const questions = [
     {
-        question: "What is the color?",
-        anwsers: ["odpowiedź", " nie odpowiedź", "cośtam ", "kolor to kolor"],
-        correctAnwser: 3,
+        question: "Jaki kolor jest najciemniejszy?",
+        answers: ["biały", "czerwony", "zielony ", "czarny"],
+        correctAnswer: 3,
         category: "art"
     },
     {
-        question: "What seanse?",
-        anwsers: ["nie", "TAK", "coś nie ", "cosik"],
-        correctAnwser: 1,
-        category: "science"
+        question: "Jakie województwo jest najmniejsze?",
+        answers: ["dolnośląskie", "opolskie", "małopolskie", "świętokrzyskie"],
+        correctAnswer: 1,
+        category: "geography"
     },
     {
-        question: "What what????",
-        anwsers: ["to jest poprawna odpowiedź", "no NO no !!!", "nie to ", "miala byc pierwsza"],
-        correctAnwser: 0,
+        question: "Na jakim kontynencie leży Polska",
+        answers: ["Europa", "Azja", "Euroazja", "Afryka"],
+        correctAnswer: 0,
+        category: "geography"
+    },
+    {
+        question: "Saksofon należy do instrumentów:",
+        answers: ["dętych drewnianych", "dętych blaszanych", "klawiszowych", "idiofonów"],
+        correctAnswer: 0,
+        category: "music"
+    },
+    {
+        question: "Największy polski kompozytor to: ",
+        answers: ["Beethoven", "Debussy", "Chopin", "Dvorak"],
+        correctAnswer: 2,
+        category: "music"
+    },
+    {
+        question: "Co oznacza kropka nad/pod nutą: ",
+        answers: ["przedłużenie", "akcent", "skrócenie", "zatrzymanie"],
+        correctAnswer: 2,
         category: "music"
     },
 

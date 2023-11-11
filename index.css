@@ -105,6 +105,7 @@ h1{
     background-color: #efd3d7;
     border-radius: 10px;
     box-shadow: 0 0 5px;
+    display: inline-block;
 }
 
 #submit-btn:hover{
