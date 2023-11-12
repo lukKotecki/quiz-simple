@@ -74,8 +74,12 @@ function getCategoriesArray(data){
     return filteredCategories
 }
 
-getCategoriesArray(questions)
 
-function getSelectedCategories(){
-
+function getSelectedCategoriesQuestionsArr(){
+    let selectedCategories = document.querySelectorAll('input[type="checkbox"]:checked')
+    let toReturn =[]
+     selectedCategories.forEach(function(e){
+         toReturn.push(e.id)
+     })
+     console.log(toReturn)
 }
