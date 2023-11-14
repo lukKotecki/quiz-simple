@@ -5,7 +5,6 @@ const question = document.getElementById('question')
 const gridContainer = document.getElementById('grid-container')
 const submitBtn = document.getElementById("submit-btn")
 
-
 renderCategories(getCategoriesArray(questions))
 renderQuestion(questions[1])
 renderAnswers(questions[1])
@@ -39,7 +38,7 @@ function renderAnswers(question){
     question.answers.forEach(function(element, index) {
         answersToRender += `
         <div class="grid-item">
-            <input type="radio" class="answer" value="${element}" id="answer-${index}" name="answer">
+            <input type="radio" class="answer" value="${element}" id="answer-${index}" name="answer" required>
         <label for="answer-${index}">${element}</label>
     </div>`
     })
@@ -54,14 +53,15 @@ function checkAnswer(question,answer){
     }
 }
 
-console.log(checkAnswer(questions[1],"opolskie"))
-
-
 function handleCheckAnswer(e){
     e.preventDefault()
-    const selectedAnswer = document.querySelector('input[type="radio"]:checked').value
+    const indexOfQuestion = questions.findIndex((element) => element.question === question.textContent) //(question.textContent)
     
-    console.log("odpowiedz to: "+ selectedAnswer)
+    if(document.querySelector('input[type="radio"]:checked')){
+        const selectedAnswer = document.querySelector('input[type="radio"]:checked').value
+        console.log(checkAnswer(questions[indexOfQuestion],selectedAnswer))
+    }
+
 }
 
 function getCategoriesArray(data){
@@ -83,3 +83,5 @@ function getSelectedCategoriesQuestionsArr(){
      })
      console.log(toReturn)
 }
+
+
