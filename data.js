@@ -8,6 +8,12 @@ export const questions = [
         category: "art"
     },
     {
+        question: "Co jest największą prędkością kosmiczną?",
+        answers: ["prędkość światła", "prędkość grawitacji", "informacja ", "czas"],
+        correctAnswer: 2,
+        category: "science"
+    },
+    {
         question: "Jakie województwo jest najmniejsze?",
         answers: ["dolnośląskie", "opolskie", "małopolskie", "świętokrzyskie"],
         correctAnswer: 1,

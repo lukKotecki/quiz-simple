@@ -7,10 +7,13 @@ const submitBtn = document.getElementById("submit-btn")
 
 renderCategories(getCategoriesArray(questions))
 renderQuestion(questions[1])
-renderAnswers(questions[1])
+
+let gameIsActive = false;
+
 
 
 submitBtn.addEventListener('click', handleCheckAnswer)
+
 
 function renderCategories(arrayOfFilteredCategories){
 
@@ -20,7 +23,7 @@ function renderCategories(arrayOfFilteredCategories){
 
         categoriesToDisplay += `
         <li>
-            <input type="checkbox" id="${element}">
+            <input type="checkbox" id="${element}" value="${element}" checked>
             <label for="${element}">${element}</label>
         </li>
         `
@@ -30,12 +33,11 @@ function renderCategories(arrayOfFilteredCategories){
 }
 
 function renderQuestion(questionToRender){
-    question.innerHTML = questionToRender.question
-}
 
-function renderAnswers(question){
+    question.innerHTML = questionToRender.question
     let answersToRender = ''
-    question.answers.forEach(function(element, index) {
+
+    questionToRender.answers.forEach(function(element, index) {
         answersToRender += `
         <div class="grid-item">
             <input type="radio" class="answer" value="${element}" id="answer-${index}" name="answer" required>
@@ -44,6 +46,7 @@ function renderAnswers(question){
     })
     gridContainer.innerHTML = answersToRender;
 }
+
 
 function checkAnswer(question,answer){
     if(answer === question.answers[question.correctAnswer]){
@@ -57,11 +60,19 @@ function handleCheckAnswer(e){
     e.preventDefault()
     const indexOfQuestion = questions.findIndex((element) => element.question === question.textContent) //(question.textContent)
     
-    if(document.querySelector('input[type="radio"]:checked')){
-        const selectedAnswer = document.querySelector('input[type="radio"]:checked').value
-        console.log(checkAnswer(questions[indexOfQuestion],selectedAnswer))
-    }
 
+
+    if(gameIsActive){
+        if(document.querySelector('input[type="radio"]:checked')){
+            const selectedAnswer = document.querySelector('input[type="radio"]:checked').value
+            console.log(checkAnswer(questions[indexOfQuestion],selectedAnswer))
+        }
+    }else{
+        // gameIsActive = true
+        // TODO  start game here
+        submitBtn.textContent = 'CHECK ANSWER'
+        console.log(getSelectedCategoriesQuestionsArr())
+    }
 }
 
 function getCategoriesArray(data){
@@ -76,12 +87,14 @@ function getCategoriesArray(data){
 
 
 function getSelectedCategoriesQuestionsArr(){
-    let selectedCategories = document.querySelectorAll('input[type="checkbox"]:checked')
+    const selectedCategories = document.querySelectorAll('input[type="checkbox"]:checked')
+    let arrayOfSelectedCategories = Array.from(selectedCategories).map(element => element.value)
     let toReturn =[]
-     selectedCategories.forEach(function(e){
-         toReturn.push(e.id)
-     })
-     console.log(toReturn)
-}
 
+     questions.forEach(function(e){
+         if(arrayOfSelectedCategories.includes(e.category))
+            toReturn.push(e)
+     })
+     return toReturn
+}
 
